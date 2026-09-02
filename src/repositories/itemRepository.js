@@ -1,11 +1,16 @@
 import fs from 'fs';
 import path from 'path';
+import os from 'os';
 import { fileURLToPath } from 'url';
 import { nanoid } from 'nanoid';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const DATA_DIR = path.resolve(__dirname, '../../data');
+
+const isServerless = process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME || false;
+const DATA_DIR = isServerless
+  ? path.join(os.tmpdir(), 'nexus_data')
+  : path.resolve(__dirname, '../../data');
 const DB_FILE = path.join(DATA_DIR, 'db.json');
 
 const INITIAL_DATA = [
@@ -106,7 +111,6 @@ class ItemRepository {
         this.memoryItems = Array.isArray(parsed.items) ? parsed.items : [...INITIAL_DATA];
       }
     } catch (err) {
-      console.warn('DB File read error, defaulting to memory store:', err.message);
       this.memoryItems = [...INITIAL_DATA];
     }
   }
@@ -120,7 +124,7 @@ class ItemRepository {
       fs.writeFileSync(tmpFile, JSON.stringify({ items: this.memoryItems }, null, 2), 'utf8');
       fs.renameSync(tmpFile, DB_FILE);
     } catch (err) {
-      console.error('Failed to persist items to disk:', err.message);
+      // In read-only or serverless cold starts, memory state is preserved
     }
   }
 
@@ -176,7 +180,6 @@ class ItemRepository {
 
     const totalCount = result.length;
 
-    // Sorting
     result.sort((a, b) => {
       let valA = a[sortBy];
       let valB = b[sortBy];

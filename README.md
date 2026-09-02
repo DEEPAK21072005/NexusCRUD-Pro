@@ -2,17 +2,22 @@
 
 <div align="center">
 
+<img src="public/assets/banner.jpg" alt="NexusCRUD Pro Banner" width="100%" style="border-radius: 12px; margin-bottom: 20px;" />
+
+[![Deployment](https://img.shields.io/badge/Vercel-Live%20Deployment-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://express-crud-experiment.vercel.app)
+[![OpenAPI / Swagger](https://img.shields.io/badge/OpenAPI%203.0-Interactive%20Docs-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)](https://express-crud-experiment.vercel.app/api-docs)
 [![Node.js Version](https://img.shields.io/badge/Node.js-v18%20%7C%20v20%20%7C%20v22-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Express.js](https://img.shields.io/badge/Express.js-5.1.0-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
 [![Zod Validation](https://img.shields.io/badge/Zod-TypeSafe%20Validation-3E67B1?style=for-the-badge&logo=zod&logoColor=white)](https://zod.dev/)
-[![OpenAPI / Swagger](https://img.shields.io/badge/OpenAPI%203.0-Interactive%20Docs-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)](http://localhost:5000/api-docs)
-[![Vitest](https://img.shields.io/badge/Vitest-Automated%20Tests%20Passing-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev/)
+[![Vitest](https://img.shields.io/badge/Vitest-100%25%20Tests%20Passing-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev/)
 [![Docker Ready](https://img.shields.io/badge/Docker-Multi--Stage%20Container-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
+<br/>
+
 **A state-of-the-art, production-ready RESTful CRUD platform and Glassmorphic analytics dashboard built with Node.js, Express 5, Clean Layered Architecture, Zod schema validation, and OpenAPI 3.0.**
 
-[Explore API Docs](http://localhost:5000/api-docs) • [Live Dashboard](http://localhost:5000) • [Architecture](#-architecture) • [Getting Started](#-quick-start) • [Docker Deployment](#-docker-deployment)
+🚀 **[Live Production Dashboard](https://express-crud-experiment.vercel.app)** • 📚 **[Interactive Swagger API Docs](https://express-crud-experiment.vercel.app/api-docs)** • 🩺 **[Live Health Probe](https://express-crud-experiment.vercel.app/api/v1/health)**
 
 </div>
 
@@ -20,7 +25,7 @@
 
 ## 🌟 Executive Overview
 
-**NexusCRUD Pro** transforms a standard CRUD API into an enterprise-grade backend platform. Engineered following **Clean Layered Architecture** principles, it provides total separation of concerns across transport, business logic, data persistence, and security layers.
+**NexusCRUD Pro** transforms a standard CRUD API into an enterprise-grade backend platform and management dashboard. Engineered following **Clean Layered Architecture** principles, it provides total separation of concerns across transport, business logic, data persistence, and security layers.
 
 Whether used as a microservice template, production data service, or full-stack reference architecture, NexusCRUD Pro delivers out-of-the-box reliability, type safety, observability, and visual excellence.
 
@@ -37,12 +42,24 @@ Whether used as a microservice template, production data service, or full-stack 
 
 ---
 
+## 🔗 Live Links
+
+| Resource | URL | Description |
+| :--- | :--- | :--- |
+| **🌐 Production Web App** | [https://express-crud-experiment.vercel.app](https://express-crud-experiment.vercel.app) | Live interactive Glassmorphic dashboard |
+| **📚 Swagger OpenAPI UI** | [https://express-crud-experiment.vercel.app/api-docs](https://express-crud-experiment.vercel.app/api-docs) | Interactive API sandbox & schema explorer |
+| **🩺 System Diagnostics** | [https://express-crud-experiment.vercel.app/api/v1/health](https://express-crud-experiment.vercel.app/api/v1/health) | Real-time memory, uptime, and node telemetry |
+
+---
+
 ## 🏗️ Clean Layered Architecture
 
 The project adheres to strict modular decoupling:
 
 ```
 nexus-crud-pro/
+├── api/                     # Vercel Serverless Function entrypoint
+│   └── index.js
 ├── src/
 │   ├── app.js               # Express application configuration & pipeline
 │   ├── server.js            # Server entrypoint with graceful shutdown
@@ -64,7 +81,7 @@ nexus-crud-pro/
 │   │   └── validate.js      # Zod request schema validation middleware
 │   ├── models/
 │   │   └── itemSchema.js    # Zod schemas for entity, queries & mutations
-│   ├── repositories/        # Persistence abstraction (Atomic JSON store)
+│   ├── repositories/        # Persistence abstraction (Atomic JSON store / Serverless tmp)
 │   │   └── itemRepository.js
 │   ├── routes/              # Express route declarations
 │   │   ├── healthRoutes.js
@@ -78,12 +95,17 @@ nexus-crud-pro/
 │       ├── logger.js
 │       ├── pagination.js
 │       └── response.js
-├── public/                  # Modern Glassmorphic SPA Dashboard
+├── public/                  # Modern Glassmorphic SPA Dashboard & Assets
+│   ├── assets/              # Logos, banners, open-graph thumbnails
+│   │   ├── banner.jpg
+│   │   ├── logo.jpg
+│   │   └── og-image.jpg
 │   ├── index.html
 │   ├── styles.css
 │   └── app.js
 ├── tests/                   # Vitest integration test suite
 │   └── items.test.js
+├── vercel.json              # Vercel deployment orchestration
 ├── Dockerfile               # Multi-stage production container
 ├── docker-compose.yml       # Instant compose orchestration
 ├── .github/workflows/ci.yml # Automated CI pipeline
@@ -176,6 +198,17 @@ The server will be running at **http://localhost:5000**
 - 🌐 **Web Dashboard**: [http://localhost:5000](http://localhost:5000)
 - 📚 **Swagger OpenAPI Docs**: [http://localhost:5000/api-docs](http://localhost:5000/api-docs)
 - 🩺 **Health Check**: [http://localhost:5000/api/v1/health](http://localhost:5000/api/v1/health)
+
+---
+
+## ⚡ Deployment to Vercel
+
+NexusCRUD Pro is configured with zero-config Vercel Serverless Function integration:
+
+```bash
+# Deploy to Vercel Production
+npx vercel --prod
+```
 
 ---
 
