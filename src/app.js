@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import swaggerUi from 'swagger-ui-express';
@@ -22,14 +23,14 @@ const app = express();
 // Security Middlewares
 app.use(
   helmet({
-    contentSecurityPolicy: false, // Allow inline styles and Swagger UI assets
+    contentSecurityPolicy: false,
     crossOriginEmbedderPolicy: false,
   })
 );
 
 app.use(
   cors({
-    origin: env.CORS_ORIGIN === '*' ? '*' : env.CORS_ORIGIN.split(','),
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'x-request-id'],
     credentials: true,
@@ -44,13 +45,24 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(requestId);
 app.use(httpLogger);
 
-// Static Dashboard Assets
-const publicDir = path.resolve(__dirname, '../public');
+// Static Dashboard Assets with multi-path discovery
+const possiblePublicDirs = [
+  path.resolve(process.cwd(), 'public'),
+  path.resolve(__dirname, '../public'),
+  path.resolve(__dirname, '../../public'),
+];
+const publicDir = possiblePublicDirs.find((d) => fs.existsSync(d)) || possiblePublicDirs[0];
+
 app.use(express.static(publicDir));
+app.use('/assets', express.static(path.join(publicDir, 'assets')));
 
 // Swagger OpenAPI Documentation
 try {
-  const swaggerPath = path.resolve(__dirname, './docs/swagger.yaml');
+  const possibleSwaggerPaths = [
+    path.resolve(__dirname, './docs/swagger.yaml'),
+    path.resolve(process.cwd(), 'src/docs/swagger.yaml'),
+  ];
+  const swaggerPath = possibleSwaggerPaths.find((p) => fs.existsSync(p)) || possibleSwaggerPaths[0];
   const swaggerDocument = YAML.load(swaggerPath);
   app.use(
     '/api-docs',
@@ -73,7 +85,12 @@ app.use(env.API_PREFIX, apiRateLimiter, apiRouter);
 
 // Fallback for root single page app
 app.get('/', (req, res) => {
-  res.sendFile(path.join(publicDir, 'index.html'));
+  const indexPath = path.join(publicDir, 'index.html');
+  if (fs.existsSync(indexPath)) {
+    res.sendFile(indexPath);
+  } else {
+    res.json({ message: 'NexusCRUD Pro API Online' });
+  }
 });
 
 // 404 and Global Error Handling
