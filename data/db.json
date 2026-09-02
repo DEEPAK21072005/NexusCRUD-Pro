@@ -1,0 +1,119 @@
+{
+  "items": [
+    {
+      "id": "item_TeVncnsBmc",
+      "name": "Quantum AI Processor",
+      "description": "",
+      "category": "Electronics",
+      "price": 999,
+      "stock": 1,
+      "status": "active",
+      "priority": "medium",
+      "tags": [],
+      "isFavorite": false,
+      "version": 1,
+      "createdAt": "2026-09-02T11:32:55.191Z",
+      "updatedAt": "2026-09-02T11:32:55.191Z"
+    },
+    {
+      "id": "item_pro_01",
+      "name": "Quantum Edge Server X1",
+      "description": "High-density edge computing server with built-in hardware acceleration and neural engine.",
+      "category": "Hardware",
+      "price": 3499.99,
+      "stock": 15,
+      "status": "active",
+      "priority": "urgent",
+      "tags": [
+        "Edge",
+        "AI",
+        "Server",
+        "Hardware"
+      ],
+      "isFavorite": true,
+      "version": 1,
+      "createdAt": "2026-08-28T11:31:18.750Z",
+      "updatedAt": "2026-09-01T11:31:18.750Z"
+    },
+    {
+      "id": "item_pro_02",
+      "name": "Nexus API Gateway Pro",
+      "description": "Ultra-low latency API gateway with distributed rate limiting, JWT validation, and GraphQL federation.",
+      "category": "Software",
+      "price": 499,
+      "stock": 999,
+      "status": "active",
+      "priority": "high",
+      "tags": [
+        "API",
+        "Gateway",
+        "Cloud",
+        "Microservices"
+      ],
+      "isFavorite": true,
+      "version": 1,
+      "createdAt": "2026-08-29T11:31:18.750Z",
+      "updatedAt": "2026-08-31T11:31:18.750Z"
+    },
+    {
+      "id": "item_pro_03",
+      "name": "Aura OLED Studio Monitor 32\"",
+      "description": "4K OLED reference display with 99.8% DCI-P3 color gamut and calibrated HDR1000 master grade.",
+      "category": "Electronics",
+      "price": 1899.5,
+      "stock": 8,
+      "status": "active",
+      "priority": "medium",
+      "tags": [
+        "Display",
+        "4K",
+        "OLED",
+        "Design"
+      ],
+      "isFavorite": false,
+      "version": 1,
+      "createdAt": "2026-08-30T11:31:18.750Z",
+      "updatedAt": "2026-08-30T11:31:18.750Z"
+    },
+    {
+      "id": "item_pro_04",
+      "name": "Design System Figma UI Kit",
+      "description": "Comprehensive enterprise design token suite with 450+ responsive components and dark mode variants.",
+      "category": "Design",
+      "price": 129,
+      "stock": 500,
+      "status": "active",
+      "priority": "low",
+      "tags": [
+        "UI",
+        "UX",
+        "Figma",
+        "Tokens"
+      ],
+      "isFavorite": false,
+      "version": 1,
+      "createdAt": "2026-08-31T11:31:18.750Z",
+      "updatedAt": "2026-08-31T11:31:18.750Z"
+    },
+    {
+      "id": "item_pro_05",
+      "name": "Automated Growth Marketing Pipeline",
+      "description": "AI-driven campaign orchestrator connecting LinkedIn, Meta Ads, and HubSpot CRM with auto-bidding.",
+      "category": "Marketing",
+      "price": 799,
+      "stock": 50,
+      "status": "pending",
+      "priority": "high",
+      "tags": [
+        "Marketing",
+        "Automation",
+        "AI",
+        "CRM"
+      ],
+      "isFavorite": false,
+      "version": 1,
+      "createdAt": "2026-09-01T11:31:18.750Z",
+      "updatedAt": "2026-09-01T11:31:18.750Z"
+    }
+  ]
+}

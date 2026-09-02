@@ -1,0 +1,19 @@
+services:
+  nexus-crud-pro:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nexus-crud-pro
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - CORS_ORIGIN=*
+      - LOG_LEVEL=info
+    volumes:
+      - data-volume:/app/data
+
+volumes:
+  data-volume:
