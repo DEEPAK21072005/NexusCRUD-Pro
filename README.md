@@ -2,9 +2,10 @@
 
 <div align="center">
 
-<img src="public/assets/banner.jpg" alt="NexusCRUD Pro Banner" width="100%" style="border-radius: 12px; margin-bottom: 20px;" />
+<img src="public/assets/thumbnail.png" alt="NexusCRUD Pro Project Thumbnail" width="100%" style="border-radius: 12px; margin-bottom: 20px;" />
 
 [![Deployment](https://img.shields.io/badge/Vercel-Live%20Deployment-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://express-crud-experiment.vercel.app)
+[![PWA Ready](https://img.shields.io/badge/PWA-Chrome%20%26%20Mobile%20Shortcut-6366f1?style=for-the-badge&logo=pwa&logoColor=white)](https://express-crud-experiment.vercel.app)
 [![OpenAPI / Swagger](https://img.shields.io/badge/OpenAPI%203.0-Interactive%20Docs-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)](https://express-crud-experiment.vercel.app/api-docs)
 [![Node.js Version](https://img.shields.io/badge/Node.js-v18%20%7C%20v20%20%7C%20v22-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Express.js](https://img.shields.io/badge/Express.js-5.1.0-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
@@ -49,6 +50,34 @@ Whether used as a microservice template, production data service, or full-stack 
 | **🌐 Production Web App** | [https://express-crud-experiment.vercel.app](https://express-crud-experiment.vercel.app) | Live interactive Glassmorphic dashboard |
 | **📚 Swagger OpenAPI UI** | [https://express-crud-experiment.vercel.app/api-docs](https://express-crud-experiment.vercel.app/api-docs) | Interactive API sandbox & schema explorer |
 | **🩺 System Diagnostics** | [https://express-crud-experiment.vercel.app/api/v1/health](https://express-crud-experiment.vercel.app/api/v1/health) | Real-time memory, uptime, and node telemetry |
+
+---
+
+## 🎨 App Icon, PWA & Shortcut Installation
+
+NexusCRUD Pro is fully configured as an installable Progressive Web App (PWA) with high-definition multi-resolution favicons, Apple touch icons, and a Web App Manifest.
+
+<div align="center">
+  <img src="public/assets/apple-touch-icon.png" alt="NexusCRUD Pro App Icon" width="120" style="border-radius: 24px; box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4); margin-bottom: 12px;" />
+  <p><em>Enterprise Holographic Nexus App Icon</em></p>
+</div>
+
+### How to Save as Desktop / Mobile Shortcut
+- **Chrome / Edge Desktop**: Click the **Install** icon in the address bar (or menu `⋮` &rarr; **Save and share** &rarr; **Install NexusCRUD Pro** / **Create shortcut...**) to pin it directly to your taskbar or desktop with its native custom icon.
+- **Android / Homey / Chrome Mobile**: Tap `⋮` &rarr; **Add to Home screen** / **Install app**.
+- **iOS Safari**: Tap **Share** (`📤`) &rarr; **Add to Home Screen**.
+- **Bookmarks**: Bookmark the site (`Ctrl+D` / `Cmd+D`) — the high-contrast holographic icon will automatically appear in your Chrome bookmarks bar.
+
+### Asset Manifest Directory
+| Asset | Format & Size | Purpose |
+| :--- | :--- | :--- |
+| `public/favicon.ico` | Multi-size ICO (16x16, 32x32, 48x48) | Root browser tab & bookmark icon |
+| `public/favicon.svg` | Scalable Vector SVG | Crisp infinite-resolution browser favicon |
+| `public/assets/apple-touch-icon.png` | 180x180 PNG | iOS home screen & navbar brand |
+| `public/assets/icon-192.png` | 192x192 PNG | Android / Chrome home shortcut icon |
+| `public/assets/icon-512.png` | 512x512 PNG | High-DPI PWA splash screen & app launcher |
+| `public/site.webmanifest` | JSON Manifest | PWA standalone shortcut configuration |
+| `public/assets/thumbnail.png` | 1280x720 PNG | Social preview, Open Graph & Twitter card |
 
 ---
 
